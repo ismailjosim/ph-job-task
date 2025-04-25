@@ -1,41 +1,70 @@
 import { Steps } from 'antd'
 import { useState } from 'react'
+import PersonalInfo from '../components/Home/PersonalInfo'
+import Experiences from '../components/Home/Experiences'
+import Projects from '../components/Home/Projects'
+import Activities from '../components/Home/Activities'
+import Preview from '../components/Home/Preview'
+
 const stepsData = [
-	{
-		title: 'Personal Details',
-	},
-	{
-		title: 'Experience',
-	},
-	{
-		title: 'Projects',
-	},
-	{
-		title: 'academics and extra activities',
-	},
-	{
-		title: 'Preview',
-	},
+	{ title: 'Personal Details' },
+	{ title: 'Experience' },
+	{ title: 'Projects' },
+	{ title: 'Extra Activities' },
+	{ title: 'Preview' },
 ]
+
 const Home = () => {
 	const [level, setLevel] = useState(0)
 
-	const handleStepChange = (current) => {
-		setLevel(current)
+	// Shared state to collect form data
+	const [cvData, setCvData] = useState({
+		personal: null,
+		experience: null,
+		project: null,
+		academic: null,
+	})
+
+	// Handlers to receive data from each step and go to next
+	const handlePersonalFinish = (data) => {
+		setCvData((prev) => ({ ...prev, personal: data }))
+		setLevel(1)
 	}
+
+	const handleExperienceFinish = (data) => {
+		setCvData((prev) => ({ ...prev, experience: data }))
+		setLevel(2)
+	}
+
+	const handleProjectFinish = (data) => {
+		setCvData((prev) => ({ ...prev, project: data }))
+		setLevel(3)
+	}
+
+	const handleAcademicFinish = (data) => {
+		setCvData((prev) => ({ ...prev, academic: data }))
+		setLevel(4)
+	}
+
 	return (
-		<section className='w-11/12 mx-auto my-10'>
+		<section className='w-11/12 md:w-2/3 lg:w-1/2 mx-auto my-10'>
 			<Steps
 				size='default'
-				current={0}
+				responsive
+				current={level}
 				items={stepsData}
-				onChange={handleStepChange}
+				onChange={(current) => setLevel(current)}
 			/>
 			<div className='mt-10'>
-				<h2 className='text-xl font-semibold'>
-					Step: {stepsData[level].title}
+				<h2 className='text-xl font-semibold mb-4'>
+					Step-{level + 1}: {stepsData[level].title}
 				</h2>
-				{/* You can render each form component based on `level` here */}
+
+				{level === 0 && <PersonalInfo onFinish={handlePersonalFinish} />}
+				{level === 1 && <Experiences onFinish={handleExperienceFinish} />}
+				{level === 2 && <Projects onFinish={handleProjectFinish} />}
+				{level === 3 && <Activities onFinish={handleAcademicFinish} />}
+				{level === 4 && <Preview cvData={cvData} />}
 			</div>
 		</section>
 	)
