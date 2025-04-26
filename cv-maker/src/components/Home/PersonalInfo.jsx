@@ -4,7 +4,6 @@ const PersonalInfo = ({ onFinish }) => {
 	const [form] = Form.useForm()
 
 	const handleFinish = (values) => {
-		console.log('Personal Info Submitted:', values)
 		onFinish(values)
 	}
 

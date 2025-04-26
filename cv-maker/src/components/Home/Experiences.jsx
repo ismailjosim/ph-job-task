@@ -1,10 +1,10 @@
 import { Button, DatePicker, Form, Input } from 'antd'
-import React from 'react'
+import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 
 const { TextArea } = Input
 const { RangePicker } = DatePicker
 
-const Experiences = ({ onFinish }) => {
+const Experiences = ({ onFinish, handlePreviousBtn }) => {
 	const [form] = Form.useForm()
 
 	const handleFinish = (values) => {
@@ -66,9 +66,16 @@ const Experiences = ({ onFinish }) => {
 				</Form.Item>
 
 				<Form.Item>
-					<Button type='primary' htmlType='submit'>
-						Next
-					</Button>
+					<div className='flex justify-between mt-5'>
+						<Button type='primary' size='large' onClick={handlePreviousBtn}>
+							<LeftOutlined />
+							<span>Previous</span>
+						</Button>
+						<Button type='primary' size='large' htmlType='submit'>
+							<span>Next</span>
+							<RightOutlined />
+						</Button>
+					</div>
 				</Form.Item>
 			</Form>
 		</div>

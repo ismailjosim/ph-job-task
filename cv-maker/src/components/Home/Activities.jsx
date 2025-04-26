@@ -1,9 +1,10 @@
 import React from 'react'
 import { Form, Input, Button, DatePicker } from 'antd'
+import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 
 const { TextArea } = Input
 
-const Activities = ({ onFinish }) => {
+const Activities = ({ onFinish, handlePreviousBtn }) => {
 	const [form] = Form.useForm()
 
 	const handleFinish = (values) => {
@@ -65,10 +66,17 @@ const Activities = ({ onFinish }) => {
 					<TextArea rows={3} placeholder='Describe your role or achievement' />
 				</Form.Item>
 
-				<Form.Item className='mt-6'>
-					<Button type='primary' htmlType='submit'>
-						Next
-					</Button>
+				<Form.Item>
+					<div className='flex justify-between mt-5'>
+						<Button type='primary' size='large' onClick={handlePreviousBtn}>
+							<LeftOutlined />
+							<span>Previous</span>
+						</Button>
+						<Button type='primary' size='large' htmlType='submit'>
+							<span>Next</span>
+							<RightOutlined />
+						</Button>
+					</div>
 				</Form.Item>
 			</Form>
 		</div>

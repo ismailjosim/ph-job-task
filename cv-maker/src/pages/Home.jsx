@@ -15,7 +15,7 @@ const stepsData = [
 ]
 
 const Home = () => {
-	const [level, setLevel] = useState(0)
+	const [level, setLevel] = useState(4)
 
 	// Shared state to collect form data
 	const [cvData, setCvData] = useState({
@@ -27,6 +27,7 @@ const Home = () => {
 
 	// Handlers to receive data from each step and go to next
 	const handlePersonalFinish = (data) => {
+		console.log(data)
 		setCvData((prev) => ({ ...prev, personal: data }))
 		setLevel(1)
 	}
@@ -45,9 +46,12 @@ const Home = () => {
 		setCvData((prev) => ({ ...prev, academic: data }))
 		setLevel(4)
 	}
+	const handlePreviousBtn = () => {
+		setLevel(level - 1)
+	}
 
 	return (
-		<section className='w-11/12 md:w-2/3 lg:w-1/2 mx-auto my-10'>
+		<section className='w-11/12 md:w-3/4 lg:w-2/3 mx-auto my-10'>
 			<Steps
 				size='default'
 				responsive
@@ -61,10 +65,27 @@ const Home = () => {
 				</h2>
 
 				{level === 0 && <PersonalInfo onFinish={handlePersonalFinish} />}
-				{level === 1 && <Experiences onFinish={handleExperienceFinish} />}
-				{level === 2 && <Projects onFinish={handleProjectFinish} />}
-				{level === 3 && <Activities onFinish={handleAcademicFinish} />}
-				{level === 4 && <Preview cvData={cvData} />}
+				{level === 1 && (
+					<Experiences
+						handlePreviousBtn={handlePreviousBtn}
+						onFinish={handleExperienceFinish}
+					/>
+				)}
+				{level === 2 && (
+					<Projects
+						handlePreviousBtn={handlePreviousBtn}
+						onFinish={handleProjectFinish}
+					/>
+				)}
+				{level === 3 && (
+					<Activities
+						handlePreviousBtn={handlePreviousBtn}
+						onFinish={handleAcademicFinish}
+					/>
+				)}
+				{level === 4 && (
+					<Preview handlePreviousBtn={handlePreviousBtn} cvData={cvData} />
+				)}
 			</div>
 		</section>
 	)
