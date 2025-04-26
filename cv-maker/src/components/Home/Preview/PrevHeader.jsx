@@ -26,7 +26,7 @@ const PrevHeader = ({ info }) => {
 				<a
 					href={`${website ? website : '/'}`}
 					target='_blank'
-					className='flex text-blue-600 underline items-center gap-1 font-medium'
+					className='flex text-[#155dfc]underline items-center gap-1 font-medium'
 				>
 					<FaGlobe color='#000' />
 					<span>Portfolio</span>
@@ -35,7 +35,7 @@ const PrevHeader = ({ info }) => {
 				<a
 					href={`${linkedin ? linkedin : '/'}`}
 					target='_blank'
-					className='flex text-blue-600 underline items-center gap-1 font-medium'
+					className='flex text-[#155dfc] underline items-center gap-1 font-medium'
 				>
 					<FaLinkedinIn color='#000' />
 					<span>LinkedIn</span>
@@ -44,7 +44,7 @@ const PrevHeader = ({ info }) => {
 				<a
 					href={`${github ? github : '/'}`}
 					target='_blank'
-					className='flex text-blue-600 underline items-center gap-1 font-medium'
+					className='flex text-[#155dfc] underline items-center gap-1 font-medium'
 				>
 					<FaGithub color='#000' />
 					<span>GitHub</span>

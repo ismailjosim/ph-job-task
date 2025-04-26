@@ -15,7 +15,7 @@ const stepsData = [
 ]
 
 const Home = () => {
-	const [level, setLevel] = useState(4)
+	const [level, setLevel] = useState(0)
 
 	// Shared state to collect form data
 	const [cvData, setCvData] = useState({
