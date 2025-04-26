@@ -4,7 +4,8 @@ import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 import { LeftOutlined } from '@ant-design/icons'
 import PrevHeader from './Preview/PrevHeader'
-
+import { Document, Packer, Paragraph, TextRun } from 'docx'
+import { saveAs } from 'file-saver'
 const Preview = ({ cvData, handlePreviousBtn }) => {
 	console.log(cvData)
 	const previewRef = useRef()
@@ -24,6 +25,82 @@ const Preview = ({ cvData, handlePreviousBtn }) => {
 
 		pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight)
 		pdf.save('my_cv.pdf')
+	}
+
+	const handleDownloadDOCX = async () => {
+		const doc = new Document({
+			sections: [
+				{
+					properties: {},
+					children: [
+						new Paragraph({
+							children: [
+								new TextRun({
+									text: `Full Name: ${cvData?.personal?.fullName || ''}`,
+									bold: true,
+								}),
+							],
+						}),
+						new Paragraph({
+							children: [
+								new TextRun(`Email: ${cvData?.personal?.email || ''}`),
+							],
+						}),
+						new Paragraph({
+							children: [
+								new TextRun(`Phone: ${cvData?.personal?.phone || ''}`),
+							],
+						}),
+						new Paragraph({
+							text: '',
+						}),
+						new Paragraph({
+							text: 'Experience:',
+							bold: true,
+						}),
+						new Paragraph({
+							children: [
+								new TextRun(
+									`${cvData?.experience?.jobTitle || ''} at ${
+										cvData?.experience?.company || ''
+									} (${cvData?.experience?.duration?.[0] || ''} - ${
+										cvData?.experience?.duration?.[1] || ''
+									})`,
+								),
+							],
+						}),
+						new Paragraph({
+							text: '',
+						}),
+						new Paragraph({
+							text: 'Education:',
+							bold: true,
+						}),
+						new Paragraph({
+							children: [
+								new TextRun(
+									`${cvData?.academic?.baDegree || ''} from ${
+										cvData?.academic?.baInstitution || ''
+									} (${cvData?.academic?.baYear || ''})`,
+								),
+							],
+						}),
+						new Paragraph({
+							children: [
+								new TextRun(
+									`${cvData?.academic?.maDegree || ''} from ${
+										cvData?.academic?.maInstitution || ''
+									} (${cvData?.academic?.maYear || ''})`,
+								),
+							],
+						}),
+					],
+				},
+			],
+		})
+
+		const blob = await Packer.toBlob(doc)
+		saveAs(blob, 'my_cv.docx')
 	}
 
 	return (
@@ -149,9 +226,14 @@ const Preview = ({ cvData, handlePreviousBtn }) => {
 					<LeftOutlined />
 					<span>Previous</span>
 				</Button>
-				<Button type='primary' size='large' onClick={handleDownloadPDF}>
-					Download PDF
-				</Button>
+				<div className='flex gap-3'>
+					<Button type='primary' size='large' onClick={handleDownloadPDF}>
+						Download PDF
+					</Button>
+					<Button type='default' size='large' onClick={handleDownloadDOCX}>
+						Download DOCX
+					</Button>
+				</div>
 			</div>
 		</div>
 	)
