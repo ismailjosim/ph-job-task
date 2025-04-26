@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Form, Input, Button } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 
 const { TextArea } = Input
 
-const Projects = ({ onFinish, handlePreviousBtn }) => {
+const Projects = ({ onFinish, handlePreviousBtn, initialValues }) => {
 	const [form] = Form.useForm()
 
+	useEffect(() => {
+		if (initialValues) {
+			form.setFieldsValue(initialValues)
+		}
+	}, [initialValues, form])
+
 	const handleFinish = (values) => {
-		console.log('Project Info:', values)
 		onFinish(values)
 	}
 

@@ -64,21 +64,29 @@ const Home = () => {
 					Step-{level + 1}: {stepsData[level].title}
 				</h2>
 
-				{level === 0 && <PersonalInfo onFinish={handlePersonalFinish} />}
+				{level === 0 && (
+					<PersonalInfo
+						initialValues={cvData.personal}
+						onFinish={handlePersonalFinish}
+					/>
+				)}
 				{level === 1 && (
 					<Experiences
+						initialValues={cvData.experience}
 						handlePreviousBtn={handlePreviousBtn}
 						onFinish={handleExperienceFinish}
 					/>
 				)}
 				{level === 2 && (
 					<Projects
+						initialValues={cvData.project}
 						handlePreviousBtn={handlePreviousBtn}
 						onFinish={handleProjectFinish}
 					/>
 				)}
 				{level === 3 && (
 					<Activities
+						initialValues={cvData.academic}
 						handlePreviousBtn={handlePreviousBtn}
 						onFinish={handleAcademicFinish}
 					/>

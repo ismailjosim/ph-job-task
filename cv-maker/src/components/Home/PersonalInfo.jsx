@@ -1,7 +1,14 @@
 import { Form, Input, Button } from 'antd'
+import { useEffect } from 'react'
 
-const PersonalInfo = ({ onFinish }) => {
+const PersonalInfo = ({ onFinish, initialValues }) => {
 	const [form] = Form.useForm()
+
+	useEffect(() => {
+		if (initialValues) {
+			form.setFieldsValue(initialValues)
+		}
+	}, [initialValues, form])
 
 	const handleFinish = (values) => {
 		onFinish(values)
@@ -11,6 +18,7 @@ const PersonalInfo = ({ onFinish }) => {
 		<Form
 			className='grid grid-cols-2 gap-5'
 			form={form}
+			size='large'
 			layout='vertical'
 			onFinish={handleFinish}
 			autoComplete='off'

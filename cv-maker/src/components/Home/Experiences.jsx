@@ -1,19 +1,25 @@
 import { Button, DatePicker, Form, Input } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
+import { useEffect } from 'react'
 
 const { TextArea } = Input
 const { RangePicker } = DatePicker
 
-const Experiences = ({ onFinish, handlePreviousBtn }) => {
+const Experiences = ({ onFinish, handlePreviousBtn, initialValues }) => {
 	const [form] = Form.useForm()
 
+	useEffect(() => {
+		if (initialValues) {
+			form.setFieldsValue(initialValues)
+		}
+	}, [initialValues, form])
+
 	const handleFinish = (values) => {
-		// Transform dates into readable strings
 		const formatted = {
 			...values,
 			duration: values.duration?.map((date) => date.format('YYYY-MM-DD')),
 		}
-		console.log('Experience Info:', formatted)
+
 		onFinish(formatted)
 	}
 
