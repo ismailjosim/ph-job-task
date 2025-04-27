@@ -2,23 +2,43 @@ import React, { useState } from 'react'
 import { Table } from 'antd'
 import dayjs from 'dayjs'
 
-const HomeTable = ({ tableData }) => {
+const HomeTable = ({ tableData, searchText, date, dateRange }) => {
 	const [pagination, setPagination] = useState({
 		current: 1,
 		pageSize: 10,
 	})
+	const filteredData = () => {
+		return tableData.filter((item) => {
+			const matchesSearch =
+				item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+				item.property_name.toLowerCase().includes(searchText.toLowerCase())
+
+			const itemDate = dayjs(item.date, 'DD/MM/YYYY')
+
+			const matchesDate = date ? itemDate.isSame(date, 'day') : true
+
+			const matchesRange =
+				dateRange.length === 2
+					? itemDate.isAfter(dateRange[0].startOf('day')) &&
+					  itemDate.isBefore(dateRange[1].endOf('day'))
+					: true
+
+			return matchesSearch && matchesDate && matchesRange
+		})
+	}
+
+	const getPaginatedData = () => {
+		const filterData = filteredData()
+		const startIndex = (pagination.current - 1) * pagination.pageSize
+		const endIndex = startIndex + pagination.pageSize
+		return filterData.slice(startIndex, endIndex)
+	}
 
 	const handleTableChange = (paginationConfig) => {
 		setPagination({
 			current: paginationConfig.current,
 			pageSize: paginationConfig.pageSize,
 		})
-	}
-
-	const getPaginatedData = () => {
-		const startIndex = (pagination.current - 1) * pagination.pageSize
-		const endIndex = startIndex + pagination.pageSize
-		return tableData.slice(startIndex, endIndex)
 	}
 
 	const generateMergedData = () => {
@@ -174,7 +194,7 @@ const HomeTable = ({ tableData }) => {
 			pagination={{
 				pageSize: pagination.pageSize,
 				current: pagination.current,
-				total: getPaginatedData().length,
+				total: tableData.length,
 			}}
 			onChange={handleTableChange}
 			bordered

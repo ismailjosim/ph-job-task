@@ -1,15 +1,16 @@
-import { Input, DatePicker, Button, Space } from 'antd'
+import { Input, DatePicker, Button } from 'antd'
 import dayjs from 'dayjs'
-import { useState } from 'react'
 import { RxCross2 } from 'react-icons/rx'
 const { RangePicker } = DatePicker
 
-const HomeFilters = () => {
-	const [searchText, setSearchText] = useState('')
-	const [date, setDate] = useState(dayjs())
-	const [dateRange, setDateRange] = useState([])
-	// const [clearFilter, setClearFilter] = useState(false)
-
+const HomeFilters = ({
+	searchText,
+	setSearchText,
+	date,
+	setDate,
+	dateRange,
+	setDateRange,
+}) => {
 	const handleClear = () => {
 		setSearchText('')
 		setDate(dayjs())
@@ -50,14 +51,12 @@ const HomeFilters = () => {
 				onChange={(e) => setSearchText(e.target.value)}
 				className='w-full'
 			/>
-
 			<DatePicker
 				size='large'
 				value={date}
 				onChange={(value) => setDate(value)}
 				className='w-full'
 			/>
-
 			<RangePicker
 				size='large'
 				presets={rangePresets}
@@ -65,7 +64,6 @@ const HomeFilters = () => {
 				onChange={(values) => setDateRange(values)}
 				className='w-full'
 			/>
-
 			<Button onClick={handleClear} size='large' type='default'>
 				<span>Clear Filters</span>
 				<RxCross2 />
