@@ -18,6 +18,8 @@ const Home = () => {
 		fetchData()
 	}, [])
 
+	console.log(tableData)
+
 	return (
 		<section className='w-11/12 mx-auto my-10'>
 			<HomeHeading />

@@ -7,22 +7,30 @@ const HomeTable = ({ tableData, searchText, date, dateRange }) => {
 		current: 1,
 		pageSize: 10,
 	})
+
 	const filteredData = () => {
 		return tableData.filter((item) => {
+			// step 01: filter by search value
 			const matchesSearch =
 				item.name.toLowerCase().includes(searchText.toLowerCase()) ||
 				item.property_name.toLowerCase().includes(searchText.toLowerCase())
 
-			const itemDate = dayjs(item.date, 'DD/MM/YYYY')
+			// Step 2: Filter by date (if `date` is provided)
+			let matchesDate = true
+			if (date) {
+				const itemDate = dayjs(item.date, 'MM-DD-YYYY')
+				const filterDate = dayjs(date)
+				matchesDate = itemDate.isSame(filterDate, 'day')
+			}
 
-			const matchesDate = date ? itemDate.isSame(date, 'day') : true
-
-			const matchesRange =
-				dateRange.length === 2
-					? itemDate.isAfter(dateRange[0].startOf('day')) &&
-					  itemDate.isBefore(dateRange[1].endOf('day'))
-					: true
-
+			// Step 3: Filter by date range (if `dateRange` is provided)
+			let matchesRange = true
+			if (dateRange?.length === 2) {
+				const itemDate = dayjs(item.date, 'MM-DD-YYYY')
+				const startDate = dayjs(dateRange[0]).startOf('day')
+				const endDate = dayjs(dateRange[1]).endOf('day')
+				matchesRange = itemDate.isAfter(startDate) && itemDate.isBefore(endDate)
+			}
 			return matchesSearch && matchesDate && matchesRange
 		})
 	}
@@ -34,6 +42,7 @@ const HomeTable = ({ tableData, searchText, date, dateRange }) => {
 		return filterData.slice(startIndex, endIndex)
 	}
 
+	// handle table data change on pagination
 	const handleTableChange = (paginationConfig) => {
 		setPagination({
 			current: paginationConfig.current,
@@ -41,6 +50,7 @@ const HomeTable = ({ tableData, searchText, date, dateRange }) => {
 		})
 	}
 
+	// generate merged data for table
 	const generateMergedData = () => {
 		const currentData = getPaginatedData()
 		const mergedData = []
@@ -107,6 +117,7 @@ const HomeTable = ({ tableData, searchText, date, dateRange }) => {
 		return mergedData
 	}
 
+	// table column
 	const columns = [
 		{
 			title: 'Employee Name',
@@ -185,20 +196,22 @@ const HomeTable = ({ tableData, searchText, date, dateRange }) => {
 	]
 
 	return (
-		<Table
-			columns={columns}
-			dataSource={generateMergedData().map((item, index) => ({
-				...item,
-				key: index,
-			}))}
-			pagination={{
-				pageSize: pagination.pageSize,
-				current: pagination.current,
-				total: tableData.length,
-			}}
-			onChange={handleTableChange}
-			bordered
-		/>
+		<div>
+			<Table
+				columns={columns}
+				dataSource={generateMergedData().map((item, index) => ({
+					...item,
+					key: index,
+				}))}
+				pagination={{
+					pageSize: pagination.pageSize,
+					current: pagination.current,
+					total: tableData.length,
+				}}
+				onChange={handleTableChange}
+				bordered
+			/>
+		</div>
 	)
 }
 

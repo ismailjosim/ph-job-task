@@ -39,7 +39,6 @@
 		"checkOut": "12:50 PM",
 		"units": 10
 	},
-
 	{
 		"name": "John Doe",
 		"date": "04-23-2025",
@@ -121,7 +120,6 @@
 		"checkOut": "12:32 PM",
 		"units": 10
 	},
-
 	{
 		"name": "Lucas Wilson",
 		"date": "04-23-2025",
@@ -161,5 +159,237 @@
 		"checkIn": "5:30 PM",
 		"checkOut": "5:32 PM",
 		"units": 10
+	},
+	{
+		"name": "Alice Williams",
+		"date": "04-23-2025",
+		"property_name": "Zeta-1",
+		"checkIn": "7:00 AM",
+		"checkOut": "7:02 AM",
+		"units": 20
+	},
+	{
+		"name": "Bob Harris",
+		"date": "04-23-2025",
+		"property_name": "Gamma-2",
+		"checkIn": "8:00 AM",
+		"checkOut": "8:03 AM",
+		"units": 25
+	},
+	{
+		"name": "Charlie Davis",
+		"date": "04-23-2025",
+		"property_name": "Alpha-3",
+		"checkIn": "9:30 AM",
+		"checkOut": "9:35 AM",
+		"units": 10
+	},
+	{
+		"name": "Diana Martinez",
+		"date": "04-23-2025",
+		"property_name": "Beta-4",
+		"checkIn": "10:45 AM",
+		"checkOut": "10:47 AM",
+		"units": 15
+	},
+	{
+		"name": "Edward Wilson",
+		"date": "04-23-2025",
+		"property_name": "Delta-8",
+		"checkIn": "11:15 AM",
+		"checkOut": "11:18 AM",
+		"units": 20
+	},
+	{
+		"name": "Fiona Clark",
+		"date": "04-23-2025",
+		"property_name": "Omega-6",
+		"checkIn": "12:30 PM",
+		"checkOut": "12:35 PM",
+		"units": 25
+	},
+	{
+		"name": "George Robinson",
+		"date": "04-23-2025",
+		"property_name": "Theta-5",
+		"checkIn": "1:00 PM",
+		"checkOut": "1:05 PM",
+		"units": 15
+	},
+	{
+		"name": "Hannah Young",
+		"date": "04-23-2025",
+		"property_name": "Sigma-4",
+		"checkIn": "2:00 PM",
+		"checkOut": "2:05 PM",
+		"units": 20
+	},
+	{
+		"name": "Ian Jackson",
+		"date": "04-23-2025",
+		"property_name": "Zeta-9",
+		"checkIn": "3:00 PM",
+		"checkOut": "3:05 PM",
+		"units": 30
+	},
+	{
+		"name": "Julia Lee",
+		"date": "04-23-2025",
+		"property_name": "Theta-7",
+		"checkIn": "4:00 PM",
+		"checkOut": "4:03 PM",
+		"units": 15
+	},
+	{
+		"name": "Kevin King",
+		"date": "04-23-2025",
+		"property_name": "Gamma-10",
+		"checkIn": "5:30 PM",
+		"checkOut": "5:35 PM",
+		"units": 25
+	},
+	{
+		"name": "Lily Scott",
+		"date": "04-23-2025",
+		"property_name": "Alpha-4",
+		"checkIn": "6:00 AM",
+		"checkOut": "6:02 AM",
+		"units": 10
+	},
+	{
+		"name": "Michael Adams",
+		"date": "04-23-2025",
+		"property_name": "Beta-6",
+		"checkIn": "7:00 AM",
+		"checkOut": "7:05 AM",
+		"units": 15
+	},
+	{
+		"name": "Nina Gray",
+		"date": "04-23-2025",
+		"property_name": "Delta-3",
+		"checkIn": "8:30 AM",
+		"checkOut": "8:35 AM",
+		"units": 25
+	},
+	{
+		"name": "Oscar Turner",
+		"date": "04-23-2025",
+		"property_name": "Omega-8",
+		"checkIn": "9:15 AM",
+		"checkOut": "9:20 AM",
+		"units": 20
+	},
+	{
+		"name": "Paula Evans",
+		"date": "04-23-2025",
+		"property_name": "Zeta-2",
+		"checkIn": "10:30 AM",
+		"checkOut": "10:32 AM",
+		"units": 15
+	},
+	{
+		"name": "Quinn Brooks",
+		"date": "04-23-2025",
+		"property_name": "Gamma-5",
+		"checkIn": "11:00 AM",
+		"checkOut": "11:03 AM",
+		"units": 20
+	},
+	{
+		"name": "Ruth Clark",
+		"date": "04-23-2025",
+		"property_name": "Sigma-2",
+		"checkIn": "12:00 PM",
+		"checkOut": "12:03 PM",
+		"units": 25
+	},
+	{
+		"name": "Steven Lopez",
+		"date": "04-23-2025",
+		"property_name": "Delta-10",
+		"checkIn": "1:45 PM",
+		"checkOut": "1:50 PM",
+		"units": 20
+	},
+	{
+		"name": "Tina Mitchell",
+		"date": "04-23-2025",
+		"property_name": "Zeta-3",
+		"checkIn": "6:30 AM",
+		"checkOut": "6:32 AM",
+		"units": 10
+	},
+	{
+		"name": "Ursula Adams",
+		"date": "04-23-2025",
+		"property_name": "Beta-2",
+		"checkIn": "7:45 AM",
+		"checkOut": "7:50 AM",
+		"units": 15
+	},
+	{
+		"name": "Victor Phillips",
+		"date": "04-23-2025",
+		"property_name": "Alpha-5",
+		"checkIn": "8:00 AM",
+		"checkOut": "8:05 AM",
+		"units": 20
+	},
+	{
+		"name": "Wendy Bell",
+		"date": "04-23-2025",
+		"property_name": "Gamma-7",
+		"checkIn": "9:00 AM",
+		"checkOut": "9:05 AM",
+		"units": 25
+	},
+	{
+		"name": "Xander Brooks",
+		"date": "04-23-2025",
+		"property_name": "Delta-4",
+		"checkIn": "10:00 AM",
+		"checkOut": "10:03 AM",
+		"units": 15
+	},
+	{
+		"name": "Yasmin White",
+		"date": "04-23-2025",
+		"property_name": "Omega-2",
+		"checkIn": "11:15 AM",
+		"checkOut": "11:20 AM",
+		"units": 10
+	},
+	{
+		"name": "Zane Carter",
+		"date": "04-23-2025",
+		"property_name": "Zeta-8",
+		"checkIn": "12:00 PM",
+		"checkOut": "12:05 PM",
+		"units": 15
+	},
+	{
+		"name": "Abigail Martin",
+		"date": "04-23-2025",
+		"property_name": "Beta-9",
+		"checkIn": "1:30 PM",
+		"checkOut": "1:35 PM",
+		"units": 20
+	},
+	{
+		"name": "Brian Turner",
+		"date": "04-23-2025",
+		"property_name": "Alpha-6",
+		"checkIn": "2:00 PM",
+		"checkOut": "2:05 PM",
+		"units": 25
+	},
+	{
+		"name": "Clara Lee",
+		"date": "04-23-2025",
+		"property_name": "Gamma-9",
+		"checkIn": "3:15 PM",
+		"checkOut": "3:20 PM",
+		"units": 20
 	}
 ]
